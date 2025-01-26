@@ -1,0 +1,47 @@
+.editing-container{
+    background: #fff;
+    color: #5f5c5c;
+   
+    width: 48.5%;
+    border-right: 3px solid #e0e0e0;
+}
+
+.editing-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 3px solid #e0e0e0;
+}
+
+.editing-header h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4e4b4b;
+}
+
+.editing-header-right{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.editing-header-right span{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+}
+
+.editing-header-right img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+
+
+
