@@ -1,8 +1,10 @@
 import { MonitorPlay, Smartphone, Tablet } from 'lucide-react';
 import '../CSS/Preview.css'
+import { useText } from '../context/TextContext';
 
 
 function Preview(){
+    const { text } = useText();
     return(
         <section className='preview-container'>
            <div className="preview-header">
@@ -15,6 +17,11 @@ function Preview(){
                 <button><MonitorPlay className='icon' style={{color: '#000', width: '1rem', height: '1rem'}} /></button>
             </div>
            </div>
+
+            <div className="preview-body">
+ 
+             sfdsafasdf
+            </div>
         </section>
     )
 }   

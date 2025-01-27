@@ -35,3 +35,9 @@
     cursor: pointer;
 }
 
+.preview-body{
+    padding: 1rem;
+    background-color: #f3eeee ;
+    height: 41.5rem;
+}
+

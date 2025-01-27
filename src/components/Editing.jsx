@@ -1,7 +1,91 @@
-import { Bold, CalendarMinus2, Files, Gauge, Image, Italic, Library, Paperclip, SendHorizonal, Smile, Sparkle } from 'lucide-react';
+import { Bold, CalendarMinus2, Files, Gauge, Image, Italic, Library, Link, Paperclip, Plus, SendHorizonal, Smile, Sparkle, Type, Underline, X } from 'lucide-react';
 import '../CSS/Editing.css'
+import { useText } from '../context/TextContext';
+import { useRef, useState } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
 
 function Editing() {
+
+    const { text, setText } = useText()
+    const [showTooltip, setShowTooltip] = useState(false);
+    const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
+    const editorRef = useRef(null);
+    const tooltipRef = useRef(null);
+
+    const handleEditorInit = (evt, editor) => {
+        editorRef.current = editor;
+        
+        // Add custom CSS for the plus icon
+        editor.dom.addStyle(`
+            .mce-content-body p:empty:before {
+                content: '+';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-left: -25px;
+                cursor: pointer;
+                color: #666;
+            }
+        `);
+
+        // Handle selection change
+        editor.on('SelectionChange', (e) => {
+            const selection = editor.selection.getContent();
+            if (selection) {
+                const bounds = editor.selection.getBoundingClientRect();
+                if (bounds) {
+                    setTooltipPosition({
+                        top: bounds.top - 40,
+                        left: bounds.left + (bounds.width / 2) - 50
+                    });
+                    setShowTooltip(true);
+                }
+            } else {
+                setShowTooltip(false);
+            }
+        });
+
+        // Handle clicks on the plus icon
+        editor.on('click', (e) => {
+            if (e.target.textContent === '+') {
+                const newHeading = '<h2>New Headline</h2>';
+                editor.selection.setContent(newHeading);
+            }
+        });
+    };
+
+    const handleUnderline = () => {
+        if (editorRef.current) {
+            editorRef.current.execCommand('underline');
+            setShowTooltip(false);
+        }
+    };
+    const handleBold = () => {
+        if (editorRef.current) {
+            editorRef.current.execCommand('bold');
+            setShowTooltip(false);
+        }
+    }
+    const handleItalic = () => {
+        if (editorRef.current) {
+            editorRef.current.execCommand('italic');
+            setShowTooltip(false);
+        }
+    }
+
+    const closeTooltip = () => {
+        setShowTooltip(false);
+    };
+
+    const handleEditorChange = (content) => {
+        setText(content);
+    };
+
+    const countCharacters = () => {
+        return text.length;
+    };
+    
+
     return (
         <section className='editing-container'>
             <div className="editing-header">
@@ -27,10 +111,75 @@ function Editing() {
                     </div>
                 </div>
                 <div className="editing-textarea">
-                    <textarea placeholder='Write your post here...' />
+                    <div className="textarea" style={{ position: 'relative' }}>
+                        <Editor
+                            apiKey="fa1a84d8dzcqt99vj2ubyitff72gtos9pxjnsesd7l8rc4pt"
+                            onInit={handleEditorInit}
+                            value={text}
+                            onEditorChange={handleEditorChange}
+                            init={{
+                                min_height: 490,
+                                max_height: 490,
+                                min_width:'100%',
+                                max_width:'100%',
+                                menubar: false,
+                                plugins: ['advlist', 'lists', 'link', 'image', 'charmap', 'preview'],
+                                toolbar: false,
+                                
+                            }}
+                        />
+
+                        {showTooltip && (
+                            <div
+                                ref={tooltipRef}
+                                className="formatting-tooltip"
+                                style={{
+                                    position: 'absolute',
+                                    top: tooltipPosition.top,
+                                    left: tooltipPosition.left,
+                                    zIndex: 1000,
+                                    background: 'white',
+                                    padding: '0.5rem',
+                                    borderRadius: '0.5rem',
+                                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                                    display: 'flex',
+                                    gap: '0.5rem'
+                                }}
+                            >
+                                <button
+                                    onClick={handleUnderline}
+                                    className="tooltip-button"
+                                    title="Underline"
+                                >
+                                    <Underline size={16} />
+                                </button>
+                                <button
+                                    onClick={handleBold}
+                                    className="tooltip-button"
+                                    title="Bold"
+                                >
+                                    <Bold size={16} />
+                                </button>
+                                <button
+                                    onClick={handleItalic}
+                                    className="tooltip-button"
+                                    title="Italic"
+                                >
+                                    <Italic size={16} />
+                                </button>
+                                <button
+                                    onClick={closeTooltip}
+                                    className="tooltip-button"
+                                    title="Close"
+                                >
+                                    <X size={16} />
+                                </button>
+                            </div>
+                        )}
+                    </div>
                     <div className="textarea-info">
                         <span>Last Saved at Jan 27th, 2025, 12:00 AM</span>
-                        <span>245 characters</span>
+                        <span>{countCharacters(text)} characters</span>
                     </div>
                 </div>
                 <div className="editing-btns">

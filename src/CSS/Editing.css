@@ -91,24 +91,44 @@
     padding: 0.3rem 0.3rem;
     border-radius: 50%;
 } 
-
 .editing-textarea{
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     border-bottom: 3px solid #e0e0e0;
     height: 33.7rem;
+    position: relative;
+}
+.new-line-button{
+    position: absolute;
 }
 
-.editing-textarea textarea{
-    min-width: 100%;
-    min-height: 98%;
+.tooltip-button {
+    padding: 4px;
     border: none;
-    color: #5f5c5c;
-    font-weight: 600;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.editing-textarea textarea:focus{
-    outline: none;
+.tooltip-button:hover {
+    background-color: #f0f0f0;
 }
+
+.formatting-tooltip {
+    background: white;
+    border: 1px solid #e0e0e0;
+}
+
+
+.textarea-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
 
 .editing-btns{
     display: flex;
