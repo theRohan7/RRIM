@@ -43,5 +43,93 @@
 }
 
 
+.editing-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.editing-tools{
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #e0e0e0;
+    padding: 0.5rem 1rem;
+}
+
+.editing-tools-left-items, .editing-tools-right-items{
+    
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    cursor: pointer;
+    color: #5f5c5c;
+}
+
+.ai-icon:hover{
+    background: #0d87cd;
+    padding: 0.3rem 0.3rem;
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+
+.editing-tools button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.3rem 0.3rem;
+    transition: all 0.3s ease;
+}
+
+
+
+
+.editing-tools button:hover {
+    background: #e0e0e0;
+    padding: 0.3rem 0.3rem;
+    border-radius: 50%;
+} 
+
+.editing-textarea{
+    padding: 1.5rem 1rem;
+    border-bottom: 3px solid #e0e0e0;
+    height: 33.7rem;
+}
+
+.editing-textarea textarea{
+    min-width: 100%;
+    min-height: 98%;
+    border: none;
+    color: #5f5c5c;
+    font-weight: 600;
+}
+
+.editing-textarea textarea:focus{
+    outline: none;
+}
+
+.editing-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+
+.editing-btns button{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    
+}
+
+
 
 
