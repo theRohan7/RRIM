@@ -1,4 +1,4 @@
-import { Bold, CalendarMinus2, Files, Gauge, Image, Italic, Library, Link, Paperclip, Plus, SendHorizonal, Smile, Sparkle, Type, Underline, X } from 'lucide-react';
+import { Bold, CalendarMinus2, Files, Gauge, Image, Italic, Library, Link, Paperclip, Plus, SendHorizonal, Smile, Sparkle, Underline, X } from 'lucide-react';
 import '../CSS/Editing.css'
 import { useText } from '../context/TextContext';
 import { useRef, useState } from 'react';
@@ -90,7 +90,7 @@ function Editing() {
                 <h3>Write Post</h3>
                 <div className='editing-header-right'>
                     <span><Gauge className='icon' style={{ color: '#000', width: '1rem', height: '1rem' }} /> Check Score</span>
-                    <img src="" alt="Profile" />
+                    <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" />
                 </div>
             </div>
             <div className="editing-body">

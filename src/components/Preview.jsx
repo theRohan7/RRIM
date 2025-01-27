@@ -18,7 +18,7 @@ function Preview(){
     const getDisplayText = () => {
         const limit = characterLimits[activeDevice];
         if (!isExpanded && text.length > limit) {
-            // Create HTML string with truncated text and "See more" button
+        
             return `${text.substring(0, limit)}... <button onclick="setIsExpanded(true)" class="see-more-btn">See more</button>`;
         }
         return text;
@@ -60,8 +60,7 @@ function Preview(){
 
                 <div className="preview-content">
                     <div className="content-head">
-                        <img src="
-                        " alt="Profile" />
+                        <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" />
                         <div className="profile-info">
                             <h4>Cody Fisher</h4>
                             <p>UI/UX Designer | Web & Mobile Design | Front-end | UI Developer</p>
