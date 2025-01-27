@@ -1,12 +1,10 @@
 .editing-container{
     background: #fff;
-    color: #5f5c5c;
-   
-    height: 100vh;
+    color: #5f5c5c;  
     width: 48.5%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     border-right: 3px solid #e0e0e0;
 }
 
@@ -50,6 +48,7 @@
 .editing-body {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .editing-tools{
@@ -97,11 +96,10 @@
 } 
 .editing-textarea{
     flex: 1;
-    overflow-y: auto;
-    height: auto;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
     border-bottom: 3px solid #e0e0e0;
     position: relative;
+
 }
 .new-line-button{
     position: absolute;

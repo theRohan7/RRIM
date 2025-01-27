@@ -15,7 +15,6 @@ function Editing() {
     const handleEditorInit = (evt, editor) => {
         editorRef.current = editor;
         
-        // Add custom CSS for the plus icon
         editor.dom.addStyle(`
             .mce-content-body p:empty:before {
                 content: '+';
@@ -28,7 +27,6 @@ function Editing() {
             }
         `);
 
-        // Handle selection change
         editor.on('SelectionChange', (e) => {
             const selection = editor.selection.getContent();
             if (selection) {
@@ -45,7 +43,7 @@ function Editing() {
             }
         });
 
-        // Handle clicks on the plus icon
+       
         editor.on('click', (e) => {
             if (e.target.textContent === '+') {
                 const newHeading = '<h2>New Headline</h2>';
@@ -118,8 +116,8 @@ function Editing() {
                             value={text}
                             onEditorChange={handleEditorChange}
                             init={{
-                                min_height: 490,
-                                max_height: 490,
+                                min_height: 465,
+                                max_height: 465,
                                 min_width:'100%',
                                 max_width:'100%',
                                 menubar: false,

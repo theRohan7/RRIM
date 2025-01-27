@@ -7,7 +7,7 @@ import { useState } from 'react';
 function Preview(){
     const { text } = useText();
     const [isExpanded, setIsExpanded] = useState(false);
-    const [activeDevice, setActiveDevice] = useState('desktop'); // default to desktop view
+    const [activeDevice, setActiveDevice] = useState('desktop'); 
 
     const characterLimits = {
         smartphone: 150,
@@ -17,7 +17,11 @@ function Preview(){
 
     const getDisplayText = () => {
         const limit = characterLimits[activeDevice];
-        return isExpanded ? text : text.length > limit ? text.substring(0, limit) + '...' : text;
+        if (!isExpanded && text.length > limit) {
+            // Create HTML string with truncated text and "See more" button
+            return `${text.substring(0, limit)}... <button onclick="setIsExpanded(true)" class="see-more-btn">See more</button>`;
+        }
+        return text;
     };
 
     const displayText = getDisplayText();
@@ -65,7 +69,10 @@ function Preview(){
 
                         </div>
                     </div>
-                    <div className="content-body" dangerouslySetInnerHTML={{ __html: text }}/>
+                    <div className="content-body" 
+                        dangerouslySetInnerHTML={{ __html: displayText }}
+                        onClick={() => !isExpanded && setIsExpanded(true)}
+                    />
                     <div className="body-footer" >
                         <div className='reaction-emojis'>
                         <p>👍</p>
